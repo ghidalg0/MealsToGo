@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
@@ -19,7 +19,7 @@ const RestaurantList = styled(FlatList)`
 const LoadingContainer = styled.View`
   position: absolute;
   top: 50%;
-  left: 50% ;
+  left: 50%;
 `;
 
 const Loading = styled(ActivityIndicator)`
