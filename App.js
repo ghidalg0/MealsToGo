@@ -8,6 +8,7 @@ import {
   Roboto_400Regular,
 } from "@expo-google-fonts/roboto";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
   const [robotoLoaded] = useRoboto({
@@ -22,11 +23,13 @@ export default function App() {
   }
 
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <RestaurantsScreen />
-      </ThemeProvider>
-      <ExpoStatusBar style="auto" />
-    </>
+    <NavigationContainer>
+      <>
+        <ThemeProvider theme={theme}>
+          <RestaurantsScreen />
+        </ThemeProvider>
+        <ExpoStatusBar style="auto" />
+      </>
+    </NavigationContainer>
   );
 }
