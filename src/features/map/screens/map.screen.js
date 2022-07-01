@@ -47,6 +47,7 @@ export const MapScreen = () =>{
                 latitude: restaurant.geometry.location.lat,
                 longitude: restaurant.geometry.location.lng,
               }}
+              pinColor={"#810281"}
             />
           );
         })}
