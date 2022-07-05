@@ -5,12 +5,14 @@ import {
   AccountContainer,
   AuthButton,
   AuthInput,
+  Title,
+  ErrorContainer,
 } from "../components/account.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
-export const LoginScreen = () => {
+export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { onLogin, error } = useContext(AuthenticationContext);
@@ -18,6 +20,9 @@ export const LoginScreen = () => {
     <AccountBackground>
       <AccountCover />
       <AccountContainer>
+        <Title>Spices</Title>
+        <Spacer size="large" />
+        <Spacer size="large" />
         <AuthInput
           label="E-mail"
           value={email}
@@ -37,11 +42,13 @@ export const LoginScreen = () => {
             onChangeText={(p) => setPassword(p)}
           />
         </Spacer>
-        {error && (
-          <Spacer size="large">
-            <Text variant="error">Wrong combination of email / password</Text>
-          </Spacer>
-        )}
+        <ErrorContainer>
+          {error && (
+            <Spacer size="large">
+              <Text variant="error">Wrong combination of email / password</Text>
+            </Spacer>
+          )}
+        </ErrorContainer>
         <Spacer size="large">
           <AuthButton
             icon="food"
@@ -52,6 +59,11 @@ export const LoginScreen = () => {
           </AuthButton>
         </Spacer>
       </AccountContainer>
+      <Spacer size="large">
+        <AuthButton mode="contained" onPress={() => navigation.goBack()}>
+          Back
+        </AuthButton>
+      </Spacer>
     </AccountBackground>
   );
 };

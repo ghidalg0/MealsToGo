@@ -21,6 +21,7 @@ export const AccountContainer = styled.View`
   background-color: rgba(255, 255, 255, 0.7);
   padding: ${(props) => props.theme.space[4]};
   margin-top: ${(props) => props.theme.space[2]};
+  border-radius: 4px;
 `;
 
 export const AuthButton = styled(Button).attrs({
@@ -35,5 +36,14 @@ export const AuthInput = styled(TextInput)`
 
 export const Title = styled.Text`
   font-size: 100px;
+  align-items: center;
   color: ${colors.brand.primary};
+`;
+
+export const ErrorContainer = styled.View`
+  max-width: 300px;
+  align-items: center;
+  align-self: center;
+  margin-top: ${(props) => props.theme.space[2]};
+  margin-bottom: ${(props) => props.theme.space[2]};
 `;
