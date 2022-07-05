@@ -29,8 +29,8 @@ export const AuthenticationContextProvider = ({ children }) => {
       return;
     }
     setIsLoading(true);
-    createUser(email, password, repeatedPassword);
-    loginRequest(email, password)
+    createUser(email, password, repeatedPassword)
+      .then(loginRequest(email, password))
       .then((us) => {
         setUser(us);
         setIsLoading(false);
