@@ -6,6 +6,7 @@ import {
   AccountCover,
   AccountContainer,
   AuthButton,
+  Title,
 } from "../components/account.styles";
 
 export const AccountScreen = ({ navigation }) => {
@@ -13,6 +14,9 @@ export const AccountScreen = ({ navigation }) => {
     <AccountBackground>
       <AccountCover />
       <AccountContainer>
+        <Title>Spices</Title>
+        <Spacer size="large" />
+        <Spacer size="large" />
         <AuthButton
           icon="food"
           mode="contained"
