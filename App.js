@@ -1,13 +1,9 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme";
 
 import { Navigation } from "./src/infrastructure/navigation/index";
-
-import { initializeApp } from "firebase/app";
-
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 import {
   useFonts as useRoboto,
@@ -20,38 +16,7 @@ import { LocationContextProvider } from "./src/services/location/location.contex
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyA2SivrHSSuy-7MFNNbk35Mhyv3sqZH7fM",
-  authDomain: "metogo-e9c2c.firebaseapp.com",
-  projectId: "metogo-e9c2c",
-  storageBucket: "metogo-e9c2c.appspot.com",
-  messagingSenderId: "1065520348469",
-  appId: "1:1065520348469:web:e41652bf931a135115607c",
-};
-
-const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth(firebaseApp);
-
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      signInWithEmailAndPassword(
-        auth,
-        "guilhem.hidalgo@tetraktys-cm.com",
-        "azerty"
-      )
-        .then((user) => {
-          console.log(user);
-          setIsAuthenticated(true);
-        })
-        .catch((e) => {
-          console.error(e);
-        });
-    }, 5000);
-  }, []);
-
   const [robotoLoaded] = useRoboto({
     Roboto_400Regular,
   });
@@ -60,10 +25,6 @@ export default function App() {
   });
 
   if (!robotoLoaded || !latoLoaded) {
-    return null;
-  }
-
-  if (!isAuthenticated) {
     return null;
   }
 
