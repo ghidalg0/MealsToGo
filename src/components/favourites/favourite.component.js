@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components/native";
 import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
+import { colors } from "../../infrastructure/theme/colors";
 
 import { FavouritesContext } from "../../services/favourites/favourites.context";
 
@@ -29,7 +30,7 @@ export const Favourite = ({ restaurant }) => {
       <AntDesign
         name={isFavourite ? "heart" : "hearto"}
         size={24}
-        color={isFavourite ? "purple" : "white"}
+        color={isFavourite ? colors.brand.primary : "white"}
       />
     </FavouriteButton>
   );

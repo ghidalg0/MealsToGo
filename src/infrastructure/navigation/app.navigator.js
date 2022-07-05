@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -10,6 +9,7 @@ import { SafeArea } from "../../utils/safe-area.component";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 
 import { MapScreen } from "../../features/map/screens/map.screen";
+import { colors } from "../theme/colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -32,7 +32,7 @@ const createScreenOptions = ({ route }) => {
       <Ionicons name={iconName} size={size} color={color} />
     ),
     tabBarInactiveTintColor: "gray",
-    tabBarActiveTintColor: "purple",
+    tabBarActiveTintColor: colors.brand.primary,
     headerShown: false,
   };
 };
