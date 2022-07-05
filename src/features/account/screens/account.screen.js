@@ -28,6 +28,7 @@ export const AccountScreen = ({ navigation }) => {
           <AuthButton
             icon="account-check-outline"
             mode="contained"
+            dark={true}
             onPress={() => navigation.navigate("Register")}
           >
             Sign Up
