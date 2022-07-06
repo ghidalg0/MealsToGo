@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Text } from "react-native";
+import { Text, Button } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { SafeArea } from "../../utils/safe-area.component";
 
 import { RestaurantsNavigator } from "./restaurants.navigator";
+import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 import { MapScreen } from "../../features/map/screens/map.screen";
 import { colors } from "../theme/colors";
@@ -19,11 +20,15 @@ const TAB_ICON = {
   Settings: "md-settings-outline",
 };
 
-const Settings = () => (
-  <SafeArea>
-    <Text>Settings</Text>
-  </SafeArea>
-);
+const Settings = () => {
+  const { onLogout } = useContext(AuthenticationContext);
+  return (
+    <SafeArea>
+      <Text>Settings</Text>
+      <Button title="Log Out" onPress={() => onLogout()} />
+    </SafeArea>
+  );
+};
 
 const createScreenOptions = ({ route }) => {
   const iconName = TAB_ICON[route.name];
