@@ -55,11 +55,9 @@ export const AuthenticationContextProvider = ({ children }) => {
   const onLogout = () => {
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
         setUser(null);
       })
       .catch((er) => {
-        // An error happened.
         setError(er.toString());
       });
   };
