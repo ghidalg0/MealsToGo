@@ -36,7 +36,7 @@ module.exports.placesRequest = (request, response, client) => {
         type: "restaurant",
         key: functions.config().google.key,
       },
-      timeout: 1000,
+      timeout: 3000,
     })
     .then((res) => {
       res.data.results = res.data.results.map(addGoogleImage);
