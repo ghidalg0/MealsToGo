@@ -27,11 +27,11 @@ export const RestaurantsContextProvider = ({ children }) => {
         setRestaurants(results);
       })
       .catch((err) => {
+        setRestaurants([]);
         setIsLoading(false);
         setError(err);
       });
   };
-
   useEffect(() => {
     if (location) {
       const locationString = `${location.lat},${location.lng}`;
