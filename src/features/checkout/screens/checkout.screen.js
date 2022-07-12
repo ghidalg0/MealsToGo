@@ -22,7 +22,7 @@ import {
 } from "../components/checkout.styles";
 import { RestaurantInfoCard } from "../../restaurants/components/restaurant-info-card.component";
 
-export const CheckoutScreen = () => {
+export const CheckoutScreen = ({ navigation }) => {
   const { cart, restaurant, sum, clearCart } = useContext(CartContext);
   const [name, setName] = useState("");
   const [card, setCard] = useState(null);
@@ -32,14 +32,22 @@ export const CheckoutScreen = () => {
     setIsLoading(true);
     if (!card || !card.id) {
       setIsLoading(false);
+      navigation.navigate("CheckoutError", {
+        error: "Please fill in a valid credit card",
+      });
       return;
     }
     payRequest(card.id, sum, name)
       .then((result) => {
         setIsLoading(false);
+        navigation.navigate("CheckoutSuccess");
+        clearCart();
       })
       .catch((e) => {
         setIsLoading(false);
+        navigation.navigate("CheckoutError", {
+          error: e,
+        });
       });
   };
 
@@ -79,7 +87,15 @@ export const CheckoutScreen = () => {
         />
         <Spacer position="top" size="large">
           {name.length > 0 && (
-            <CreditCardInput name={name} onSuccess={setCard} />
+            <CreditCardInput
+              name={name}
+              onSuccess={setCard}
+              onError={() =>
+                navigation.navigate("CheckoutError", {
+                  error: "Something went wrong processing your credit card",
+                })
+              }
+            />
           )}
         </Spacer>
       </ScrollView>
