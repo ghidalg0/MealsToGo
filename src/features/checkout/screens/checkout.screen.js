@@ -10,6 +10,8 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import { CreditCardInput } from "../components/credit-card.component";
 import { CartContext } from "../../../services/cart/cart.context";
 
+import { payRequest } from "../../../services/checkout/checkout.service";
+
 import {
   CartIconContainer,
   CartIcon,
@@ -22,6 +24,14 @@ import { RestaurantInfoCard } from "../../restaurants/components/restaurant-info
 export const CheckoutScreen = () => {
   const { cart, restaurant, sum, clearCart } = useContext(CartContext);
   const [name, setName] = useState("");
+  const [card, setCard] = useState(null);
+
+  const onPay = () => {
+    if (!card || !card.id) {
+      return;
+    }
+    payRequest(card.id, sum, name);
+  };
 
   if (!cart.length || !restaurant) {
     return (
@@ -57,11 +67,13 @@ export const CheckoutScreen = () => {
           }}
         />
         <Spacer position="top" size="large">
-          {name.length > 0 && <CreditCardInput name={name} />}
+          {name.length > 0 && (
+            <CreditCardInput name={name} onSuccess={setCard} />
+          )}
         </Spacer>
       </ScrollView>
       <Spacer position="top" size="large" />
-      <PayButton icon="cash" mode="contained" onPress={() => {}}>
+      <PayButton icon="cash" mode="contained" onPress={onPay}>
         Pay Now
       </PayButton>
       <Spacer position="top" size="large" />
