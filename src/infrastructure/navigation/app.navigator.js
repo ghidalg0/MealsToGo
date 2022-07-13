@@ -11,7 +11,7 @@ import { FavouritesContextProvider } from "../../services/favourites/favourites.
 import { CartContextProvider } from "../../services/cart/cart.context";
 
 import { MapScreen } from "../../features/map/screens/map.screen";
-import { CheckoutScreen } from "../../features/checkout/screens/checkout.screen";
+// import { CheckoutScreen } from "../../features/checkout/screens/checkout.screen";
 import { colors } from "../theme/colors";
 import { SettingsNavigator } from "./settings.navigator";
 import { CheckoutNavigator } from "./checkout.navigator";
@@ -31,7 +31,7 @@ const createScreenOptions = ({ route }) => {
     tabBarIcon: ({ size, color }) => (
       <Ionicons name={iconName} size={size} color={color} />
     ),
-    tabBarInactiveTintColor: "gray",
+    tabBarInactiveTintColor: colors.brand.muted,
     tabBarActiveTintColor: colors.brand.primary,
     headerShown: false,
   };

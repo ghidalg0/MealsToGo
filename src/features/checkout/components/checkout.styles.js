@@ -43,7 +43,7 @@ export const PayButton = styled(Button).attrs({
 `;
 
 export const ClearButton = styled(Button).attrs({
-  color: colors.brand.primary,
+  color: colors.brand.secondary,
 })`
   width: 80%;
   align-self: center;

@@ -10,6 +10,7 @@ import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 
 import { useFocusEffect } from "@react-navigation/native";
+import { colors } from "../../../infrastructure/theme/colors";
 
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
@@ -40,7 +41,11 @@ export const SettingsScreen = ({ navigation }) => {
       <AvatarContainer>
         <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
           {!photo && (
-            <Avatar.Icon size={180} icon="human" backgroundColor="#D00101" />
+            <Avatar.Icon
+              size={180}
+              icon="human"
+              backgroundColor={colors.brand.secondary}
+            />
           )}
           {photo && (
             <Avatar.Image
