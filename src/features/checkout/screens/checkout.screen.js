@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 
 import { ScrollView } from "react-native";
-import { List } from "react-native-paper";
+import { List, Divider } from "react-native-paper";
 
 import { Text } from "../../../components/typography/text.component";
 
@@ -72,12 +72,19 @@ export const CheckoutScreen = ({ navigation }) => {
             <Text>Your Order</Text>
           </Spacer>
           <List.Section>
-            {cart.map(({ item, price }) => {
-              return <List.Item title={`${item} - €${price / 100}`} />;
+            {cart.map(({ item, price }, i) => {
+              return (
+                <List.Item
+                  title={`${item} - €${price / 100}`}
+                  key={`item-${i}`}
+                />
+              );
             })}
           </List.Section>
           <Text>Total: €{sum / 100}</Text>
         </Spacer>
+        <Spacer position="top" size="small" />
+        <Divider />
         <NameInput
           label="Name"
           value={name}
