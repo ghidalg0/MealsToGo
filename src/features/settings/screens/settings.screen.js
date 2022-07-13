@@ -12,6 +12,18 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import { useFocusEffect } from "@react-navigation/native";
 import { colors } from "../../../infrastructure/theme/colors";
 
+const TransparentSafeArea = styled(SafeArea)`
+  background-color: transparent;
+`;
+
+// const SettingsBackground = styled.ImageBackground.attrs({
+//   source: require("../../../../assets/food_bg.jpg"),
+// })`
+//   position: absolute;
+//   height: 100%;
+//   width: 100%;
+// `;
+
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
 `;
@@ -37,7 +49,8 @@ export const SettingsScreen = ({ navigation }) => {
   );
 
   return (
-    <SafeArea>
+    // <SettingsBackground>
+    <TransparentSafeArea>
       <AvatarContainer>
         <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
           {!photo && (
@@ -64,15 +77,29 @@ export const SettingsScreen = ({ navigation }) => {
         <SettingsItem
           title="Favourites"
           description="View your favourites"
-          left={(props) => <List.Icon {...props} color="black" icon="heart" />}
+          left={(props) => <List.Icon {...props} color={colors.brand.primary} icon="heart" />}
           onPress={() => navigation.navigate("Favourites")}
         />
+        <Spacer position="top" size="small" />
+        <SettingsItem
+          title="Payment"
+          left={(props) => <List.Icon {...props} color={colors.brand.primary} icon="cart" />}
+          onPress={() => null}
+        />
+        <Spacer position="top" size="small" />
+        <SettingsItem
+          title="Past orders"
+          left={(props) => <List.Icon {...props} color={colors.brand.primary} icon="history" />}
+          onPress={() => null}
+        />
+        <Spacer position="top" size="small" />
         <SettingsItem
           title="Logout"
-          left={(props) => <List.Icon {...props} color="black" icon="door" />}
+          left={(props) => <List.Icon {...props} color={colors.brand.primary} icon="door" />}
           onPress={onLogout}
         />
       </List.Section>
-    </SafeArea>
+    </TransparentSafeArea>
+    // </SettingsBackground>
   );
 };

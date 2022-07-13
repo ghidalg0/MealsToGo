@@ -4,7 +4,6 @@ import {
   TextInput,
   Button,
   ActivityIndicator,
-  Colors,
 } from "react-native-paper";
 import { colors } from "../../../infrastructure/theme/colors";
 
